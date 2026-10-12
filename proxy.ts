@@ -1,5 +1,3 @@
-"use server"
-
 import type { NextURL } from "next/dist/server/web/next-url"
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
@@ -13,9 +11,7 @@ function redirectIfProtectedRoute(nextUrl: NextURL) {
 
   if (routes.protectedRoutes.some((route) => pathname.startsWith(route))) {
     const redirectUrl = new URL(routes.signInRoute, nextUrl)
-    if (pathname !== routes.landingRoute) {
-      redirectUrl.searchParams.set("next", pathname + search)
-    }
+    redirectUrl.searchParams.set("next", pathname + search)
     return NextResponse.redirect(redirectUrl)
   }
 
@@ -113,10 +109,7 @@ export default async function proxy(req: NextRequest) {
     return redirectIfProtectedRoute(nextUrl)
   }
 
-  if (
-    pathname === routes.landingRoute ||
-    routes.authRoutes.some((route) => pathname.startsWith(route))
-  ) {
+  if (routes.authRoutes.some((route) => pathname.startsWith(route))) {
     return redirectTo(routes.DEFAULT_SIGNIN_REDIRECT, nextUrl)
   }
 

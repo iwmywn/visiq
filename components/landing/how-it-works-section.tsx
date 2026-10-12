@@ -92,7 +92,7 @@ const demoPersonalInformation: PersonalInformationValues = {
   department: "Research & Development",
   company: "NextTech Solutions",
   accreditations: "MBA, CPA",
-  headline: "Software Engineer with 1+ year of experience.",
+  headline: "Software Engineer with 2+ year of experience.",
   bio: "Software Engineer with skills in full-stack development, cloud computing, and system design.",
 }
 
